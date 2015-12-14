@@ -1,0 +1,129 @@
+<div class="row  border-bottom white-bg dashboard-header">
+  <h1 style="padding:0 0 20px">Edit Business Profile</h1>
+  <div class="formtabs">
+      <form name="bpForm" ng-submit="bpForm.$valid && process_bpForm()" novalidate>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li ng-class="{active:isSelected(1)}">
+            <a ng-click="selectTab(1)" href="">General Info</a></li>
+          <li ng-class="{active:isSelected(2)}">
+            <a ng-click="selectTab(2)" href="">Marketing & Ad's</a></li>
+          <li ng-class="{active:isSelected(3)}">
+            <a ng-click="selectTab(3)" href="">Social Media</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab" ng-show="isSelected(1)">
+            <div class="form-group">
+              <label for="company_name">Company Name</label>
+              <input type="text" ng-model="bpformdata.preferred_partner_company_name" class="form-control" id="company_name" required>
+            </div>
+            <div class="form-group">
+              <label for="about">About The Company</label>
+              <textarea class="form-control" ng-model="bpformdata.about_the_company" rows="7" id="about"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="short_about">Short About The Company</label>
+              <textarea class="form-control" ng-model="bpformdata.short_about_the_company" rows="3" id="short_about"></textarea>
+            </div>
+            <div class="form-group " style="overflow:hidden;">
+              <h3>Primary Services</h3>
+              <div class="dynamic-rows" ng-repeat="primary in bpformdata.primary_services">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="service_title">Service Title</label>
+                    <input type="text" ng-model="primary.service_title" class="form-control" id="service_title">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="service_description">Service Description</label>
+                    <input type="text" ng-model="primary.service_description" class="form-control" id="service_description">
+                  </div>
+                </div>
+                <i class="fa fa-minus-circle" ng-click="removePSItem($index)"></i>
+              </div>
+              <button type="button" class="btn btn-default pull-right" ng-click="addPSRow()">Add Rows</button>
+            </div><!-- end Primary Services -->
+
+            <div class="form-group" style="overflow:hidden;">
+              <h3>Business Addresses</h3>
+              <div class="dynamic-rows" ng-repeat="address in bpformdata.business_addresses">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" ng-model="address.address" class="form-control" id="address">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" ng-model="address.latitude" class="form-control" id="latitude">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" ng-model="address.longitude" class="form-control" id="longitude">
+                  </div>
+                </div>
+                <i class="fa fa-minus-circle" ng-click="removeBAItem($index)"></i>
+              </div>
+              <button type="button" class="btn btn-default pull-right" ng-click="addBARow()">Add Rows</button>
+            </div><!-- end Business Addresses -->
+
+            <div class="form-group">
+              <label for="email_address">Email address</label>
+              <input type="email" ng-model="bpformdata.email_address" class="form-control" id="email_address" >
+            </div>
+            <div class="form-group">
+              <label for="phone_number">Phone Number</label>
+              <input type="text" ng-model="bpformdata.phone_number" class="form-control" id="phone_number" >
+            </div>
+            <div class="form-group">
+              <label for="partner_website">Partner Website</label>
+              <input type="text" ng-model="bpformdata.partner_website" class="form-control" id="partner_website">
+            </div>
+            <div class="form-group">
+              <label for="profile_top_title">Custom Profile Top Title</label>
+              <input type="text" ng-model="bpformdata.profile_top_title" class="form-control" id="profile_top_title">
+            </div>
+            <div class="form-group">
+              <label for="profile_contact_area_title">Custom Contact Area Title</label>
+              <input type="text" ng-model="bpformdata.profile_contact_area_title" class="form-control" id="profile_contact_area_title">
+            </div>
+
+          </div> <!-- end tab 1 -->
+          <div class="tab" ng-show="isSelected(2)">
+            <div class="form-group">
+              <label for="homepage_ad_headline">Homepage AD Headline</label>
+              <input type="text" ng-model="bpformdata.homepage_ad_headline" class="form-control" id="homepage_ad_headline">
+            </div>
+            <div class="form-group">
+              <label for="homepage_ad_subhead">Homepage AD Subhead</label>
+              <textarea class="form-control" ng-model="bpformdata.homepage_ad_subhead" rows="3" id="homepage_ad_subhead"></textarea>
+            </div>
+          </div><!-- end tab 2 -->
+          <div class="tab" ng-show="isSelected(3)">
+            <div class="form-group">
+              <label for="facebook_page">Facebook Page</label>
+              <input type="text" ng-model="bpformdata.facebook_page" class="form-control" id="facebook_page">
+            </div>
+            <div class="form-group">
+              <label for="twitter">Twitter</label>
+              <input type="text" ng-model="bpformdata.twitter" class="form-control" id="twitter">
+            </div>
+            <div class="form-group">
+              <label for="google_plus">Google+</label>
+              <input type="text" ng-model="bpformdata.google_plus" class="form-control" id="google_plus">
+            </div>
+            <div class="form-group">
+              <label for="yelp_business_id">Yelp Business ID</label>
+              <input type="text" ng-model="bpformdata.yelp_business_id" class="form-control" id="yelp_business_id">
+            </div>
+          </div><!-- end tab 3 -->
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div><!-- form tabs -->
+</div>

@@ -1,0 +1,10 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div style="visibility:hidden">
+            <img src="img/wna-logo.png" alt="">
+        </div>
+        <h3>Select what site to edit</h3>
+        <select name="language" class="form-control col-centered" ng-options="site as site.blogname for site in sites"
+   ng-model="selectedItem" ng-change="gotoDashboard(selectedItem)"></select>
+    </div>
+</div>

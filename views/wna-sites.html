@@ -1,0 +1,6 @@
+<div class="row wna_sites" ng-repeat="site in sites">
+  <img ng-src="{{site.profile_logo}}" class="img-responsive" alt="Responsive image">
+  <h2>{{site.preferred_partner_company_name}}</h2>
+  <div ng-bind-html="site.about_the_company | sanitize"></div>
+  <p><a class="btn btn-default" href="/ppsite/{{site.blog_id}}" role="button">View Profile »</a></p>
+</div>
